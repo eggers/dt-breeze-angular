@@ -1,0 +1,7 @@
+{
+  "name": "dt-breeze",
+  "version": "1.4.1",
+  "dependencies": {
+    "dt-q": "latest"
+  }
+}
