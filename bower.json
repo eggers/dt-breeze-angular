@@ -1,7 +1,20 @@
 {
-  "name": "dt-breeze",
+  "name": "dt-breeze-angular",
   "version": "1.4.1",
   "dependencies": {
-    "dt-q": "latest"
-  }
+    "dt-angular": "latest"
+  },
+  "homepage": "https://github.com/eggers/dt-breeze-angular",
+  "authors": [
+    "Jacob Eggers"
+  ],
+  "description": "A breeze TypeScript declaration for use with breeze.angular.q.js",
+  "main": "breeze.d.ts",
+  "keywords": [
+    "BreezeJS",
+    "AngularJS",
+    "ng.IPromise",
+    "TypeScript"
+  ],
+  "license": "MIT"
 }

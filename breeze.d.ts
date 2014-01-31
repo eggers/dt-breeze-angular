@@ -7,7 +7,7 @@
 // Updated March 27 2013 - John Lantz (www.ideablade.com).
 // Updated Aug 13 2013 - Steve Schmitt ( www.ideablade.com).
 
-/// <reference path="../dt-q/Q.d.ts" />
+/// <reference path="../dt-angular/angular.d.ts" />
 
 declare module breeze.core {
 
@@ -202,9 +202,9 @@ declare module breeze {
     class DataServiceAdapter {
         checkForRecomposition(interfaceInitializedArgs: { interfaceName: string; isDefault: boolean}): void;
         initialize(): void;
-        fetchMetadata(metadataStore: MetadataStore, dataService: DataService): Q.Promise<any>;
-        executeQuery(mappingContext: Object): Q.Promise<any>;
-        saveChanges(saveContext: { resourceName: string }, saveBundle: Object): Q.Promise<SaveResult>;
+        fetchMetadata(metadataStore: MetadataStore, dataService: DataService): ng.IPromise<any>;
+        executeQuery(mappingContext: Object): ng.IPromise<any>;
+        saveChanges(saveContext: { resourceName: string }, saveBundle: Object): ng.IPromise<SaveResult>;
         JsonResultsAdapter: JsonResultsAdapter;
     }
 
@@ -297,8 +297,8 @@ declare module breeze {
         getValidationErrors(property: IProperty): ValidationError[];
         hasValidationErrors: boolean;
 
-        loadNavigationProperty(navigationProperty: string, callback?: Function, errorCallback?: Function): Q.Promise<QueryResult>;
-        loadNavigationProperty(navigationProperty: NavigationProperty, callback?: Function, errorCallback?: Function): Q.Promise<QueryResult>;
+        loadNavigationProperty(navigationProperty: string, callback?: Function, errorCallback?: Function): ng.IPromise<QueryResult>;
+        loadNavigationProperty(navigationProperty: NavigationProperty, callback?: Function, errorCallback?: Function): ng.IPromise<QueryResult>;
 
         rejectChanges(): void;
 
@@ -378,15 +378,15 @@ declare module breeze {
         createEntity(typeName: string, config?: {}, entityState?: EntityStateSymbol) : Entity;
         createEntity(entityType: EntityType, config?: {}, entityState?: EntityStateSymbol): Entity;
         detachEntity(entity: Entity): boolean;
-        executeQuery(query: string, callback?: ExecuteQuerySuccessCallback, errorCallback?: ExecuteQueryErrorCallback): Q.Promise<QueryResult>;
-        executeQuery(query: EntityQuery, callback?: ExecuteQuerySuccessCallback, errorCallback?: ExecuteQueryErrorCallback): Q.Promise<QueryResult>;
+        executeQuery(query: string, callback?: ExecuteQuerySuccessCallback, errorCallback?: ExecuteQueryErrorCallback): ng.IPromise<QueryResult>;
+        executeQuery(query: EntityQuery, callback?: ExecuteQuerySuccessCallback, errorCallback?: ExecuteQueryErrorCallback): ng.IPromise<QueryResult>;
 
         executeQueryLocally(query: EntityQuery): Entity[];
         exportEntities(entities?: Entity[]): string;
-        fetchEntityByKey(typeName: string, keyValue: any, checkLocalCacheFirst?: boolean): Q.Promise<EntityByKeyResult>;
-        fetchEntityByKey(typeName: string, keyValues: any[], checkLocalCacheFirst?: boolean): Q.Promise<EntityByKeyResult>;
-        fetchEntityByKey(entityKey: EntityKey, checkLocalCacheFirst?: boolean): Q.Promise<EntityByKeyResult>;
-        fetchMetadata(callback?: (schema: any) => void , errorCallback?: breeze.core.ErrorCallback): Q.Promise<any>;
+        fetchEntityByKey(typeName: string, keyValue: any, checkLocalCacheFirst?: boolean): ng.IPromise<EntityByKeyResult>;
+        fetchEntityByKey(typeName: string, keyValues: any[], checkLocalCacheFirst?: boolean): ng.IPromise<EntityByKeyResult>;
+        fetchEntityByKey(entityKey: EntityKey, checkLocalCacheFirst?: boolean): ng.IPromise<EntityByKeyResult>;
+        fetchMetadata(callback?: (schema: any) => void , errorCallback?: breeze.core.ErrorCallback): ng.IPromise<any>;
         generateTempKeyValue(entity: Entity): any;
         getChanges(): Entity[];
         getChanges(entityTypeName: string): Entity[];
@@ -420,7 +420,7 @@ declare module breeze {
         importEntities(exportedData: Object, config?: { mergeStrategy?: StrategySymbol; }): EntityManager;
 
         rejectChanges(): Entity[];
-        saveChanges(entities?: Entity[], saveOptions?: SaveOptions, callback?: SaveChangesSuccessCallback, errorCallback?: SaveChangesErrorCallback): Q.Promise<SaveResult>;
+        saveChanges(entities?: Entity[], saveOptions?: SaveOptions, callback?: SaveChangesSuccessCallback, errorCallback?: SaveChangesErrorCallback): ng.IPromise<SaveResult>;
         setProperties(config: EntityManagerProperties): void;
     }
 
@@ -491,7 +491,7 @@ declare module breeze {
 
         constructor (resourceName?: string);
 
-        execute(callback?: ExecuteQuerySuccessCallback, errorCallback?: ExecuteQueryErrorCallback): Q.Promise<QueryResult>;
+        execute(callback?: ExecuteQuerySuccessCallback, errorCallback?: ExecuteQueryErrorCallback): ng.IPromise<QueryResult>;
         executeLocally(): Entity[];
         expand(propertyPaths: string[]): EntityQuery;
         expand(propertyPaths: string): EntityQuery;
@@ -643,8 +643,8 @@ declare module breeze {
         addDataService(dataService: DataService): void;
         addEntityType(structuralType: IStructuralType): void;
         exportMetadata(): string;
-        fetchMetadata(dataService: string, callback?: (data: any) => void , errorCallback?: breeze.core.ErrorCallback): Q.Promise<any>;
-        fetchMetadata(dataService: DataService, callback?: (data: any) => void , errorCallback?: breeze.core.ErrorCallback): Q.Promise<any>;
+        fetchMetadata(dataService: string, callback?: (data: any) => void , errorCallback?: breeze.core.ErrorCallback): ng.IPromise<any>;
+        fetchMetadata(dataService: DataService, callback?: (data: any) => void , errorCallback?: breeze.core.ErrorCallback): ng.IPromise<any>;
         getDataService(serviceName: string): DataService;
         getEntityType(entityTypeName: string, okIfNotFound?: boolean): IStructuralType;
         getEntityTypes(): IStructuralType[];
